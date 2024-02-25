@@ -28,6 +28,9 @@ export default function Home() {
         <li>
           <Link href={"/product"} >Product</Link>
         </li>
+        <li>
+          <Link href={"/todos"} >TOdos</Link>
+        </li>
       </ul>
     </div>
   )

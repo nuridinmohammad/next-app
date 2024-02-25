@@ -1,8 +1,8 @@
 import React, { Suspense } from "react"
-import { fetchAllPost } from "../page"
 import { fetchPostById } from "@/actions/fetchBlogById"
 import { BlogInterface } from "@/types/post"
 import { Loading } from "@/components/loading"
+import { fetchAllPost } from "@/actions/fetchPosts"
 
 export async function generateStaticParams() {
   const posts = (await fetchAllPost()) as unknown as BlogInterface[]

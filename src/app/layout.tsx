@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex min-h-screen flex-col items-center p-24">
           <h1>Root Layout</h1>
           <Link href={"/"}>Back to Beranda</Link>
+          <br />
           {children}
         </main>
       </body>

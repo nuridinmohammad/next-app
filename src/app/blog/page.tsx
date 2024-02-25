@@ -1,22 +1,13 @@
+import { fetchAllPost } from "@/actions/fetchPosts"
 import { Loading } from "@/components/loading"
 import { BlogInterface } from "@/types/post"
 import { CatchError } from "@/utils/error"
 import Link from "next/link"
 import React, { Suspense } from "react"
 
-export async function fetchAllPost() {
-  try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts", { cache: "force-cache" })
-    if (!response.ok) {
-      throw new Error("Error fetch All Post")
-    }
-    return response.json()
-  } catch (error) {
-    return CatchError.getError(error)
-  }
-}
 
-export default async function page() {
+
+export default async function BlogPage() {
   // await new Promise((resolve) => setTimeout(resolve, 3000))
   const posts = (await fetchAllPost()) as unknown as BlogInterface[]
   return (
