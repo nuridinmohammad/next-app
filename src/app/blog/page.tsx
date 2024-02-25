@@ -1,11 +1,12 @@
+import { Loading } from "@/components/loading"
 import { BlogInterface } from "@/types/post"
 import { CatchError } from "@/utils/error"
 import Link from "next/link"
-import React from "react"
+import React, { Suspense } from "react"
 
 export async function fetchAllPost() {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {cache:"force-cache"})
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", { cache: "force-cache" })
     if (!response.ok) {
       throw new Error("Error fetch All Post")
     }
@@ -21,17 +22,22 @@ export default async function page() {
   return (
     <div>
       Blog Page
-      <ul>
-        {posts.map((item: BlogInterface, index: number) => {
-          return (
-            <>
-              <li key={index}>
-                {item.title} <Link href={`/blog/${item.id}`} prefetch={true} className="underline bg-blue-300">detail</Link>
-              </li>
-            </>
-          )
-        })}
-      </ul>
+      <Suspense fallback={<Loading/>}>
+        <ul>
+          {posts.map((item: BlogInterface, index: number) => {
+            return (
+              <>
+                <li key={index}>
+                  {item.title}{" "}
+                  <Link href={`/blog/${item.id}`} prefetch={true} className="underline bg-blue-300">
+                    detail
+                  </Link>
+                </li>
+              </>
+            )
+          })}
+        </ul>
+      </Suspense>
     </div>
   )
 }

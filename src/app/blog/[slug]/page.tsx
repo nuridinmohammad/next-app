@@ -1,13 +1,13 @@
-import React from "react"
+import React, { Suspense } from "react"
 import { fetchAllPost } from "../page"
 import { fetchPostById } from "@/actions/fetchBlogById"
 import { BlogInterface } from "@/types/post"
-
+import { Loading } from "@/components/loading"
 
 export async function generateStaticParams() {
-  const posts = await fetchAllPost() as unknown as BlogInterface[]
+  const posts = (await fetchAllPost()) as unknown as BlogInterface[]
   return posts.map((post) => ({
-    slug: post.id.toString() ,
+    slug: post.id.toString(),
   }))
 }
 
@@ -18,8 +18,10 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <div>
       Blog
-      <h2 className="text-2xl">{post?.title}</h2>
-      <p>{post?.body}</p>
+      <Suspense fallback={<Loading />}>
+        <h2 className="text-2xl">{post?.title}</h2>
+        <p>{post?.body}</p>
+      </Suspense>
     </div>
   )
 }

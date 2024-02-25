@@ -1,7 +1,7 @@
 import Products from '@/components/products'
 import React, { Suspense } from 'react'
-import Loading from '../blog/loading'
 import Users from '@/components/users'
+import { Loading } from '@/components/loading'
 
 export default function page() {
   return (
