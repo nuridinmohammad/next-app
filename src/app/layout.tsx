@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Link from "next/link"
+import { Suspense } from "react"
+import { Loading } from "@/components/loading"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,7 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <h1>Root Layout</h1>
           <Link href={"/"}>Back to Beranda</Link>
           <br />
+          <Suspense fallback={<Loading/>}>
           {children}
+
+          </Suspense>
         </main>
       </body>
     </html>

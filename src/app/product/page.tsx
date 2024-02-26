@@ -1,13 +1,13 @@
-
-import { PhotoList } from "@/components/photo-list"
-import React from "react"
+import Form from "@/components/form"
+import Products from "@/components/products"
 
 export default function page() {
   return (
     <div>
       Product Page
-      <PhotoList />
-
+      <Form />
+      {/* <PhotoList /> */}
+      <Products />
     </div>
   )
 }

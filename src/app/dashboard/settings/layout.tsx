@@ -1,8 +1,10 @@
 "use client"
 
+import { Loading } from "@/components/loading"
 import { PrefetchKind } from "next/dist/client/components/router-reducer/router-reducer-types"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
+import { Suspense } from "react"
 
 export default function SettingLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -31,7 +33,8 @@ export default function SettingLayout({ children }: { children: React.ReactNode 
           </Link>
         </li>
       </ul>
-      {children}
+      <Suspense fallback={<Loading/>}>{children}</Suspense>
+
     </div>
   )
 }

@@ -1,7 +1,9 @@
 "use client"
 
+import { Loading } from "@/components/loading"
 import Link from "next/link"
 import { usePathname, useSearchParams, useSelectedLayoutSegment } from "next/navigation"
+import { Suspense } from "react"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = useSelectedLayoutSegment()
@@ -18,8 +20,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div>
       <h2>Dashboard Layout</h2>
       <div className="flex flex-col justify-start items-start">
-      <button onClick={() => updateSorting("asc")}>Sort Ascending</button>
-      <button onClick={() => updateSorting("desc")}>Sort Descending</button>
+        <button onClick={() => updateSorting("asc")}>Sort Ascending</button>
+        <button onClick={() => updateSorting("desc")}>Sort Descending</button>
       </div>
       <ul>
         <li>
@@ -34,7 +36,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </li>
       </ul>
 
-      {children}
+      <Suspense fallback={<Loading/>}>{children}</Suspense>
     </div>
   )
 }
