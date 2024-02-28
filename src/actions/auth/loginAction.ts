@@ -12,7 +12,7 @@ export async function loginAction(e: FormData) {
       body: JSON.stringify({
         username: e.get("username"),
         password: e.get("password"),
-        expiresInMins: 60, // optional
+        expiresInMins: 60 * 24, // optional
       }),
     });
     if (!response.ok) {
