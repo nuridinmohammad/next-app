@@ -9,6 +9,7 @@ export function Logout() {
   return (
     <form action={logoutAction}>
       <button
+      formAction={logoutAction}
         disabled={pending}
         className="bg-red-400 px-2  rounded-full text-white"
       >

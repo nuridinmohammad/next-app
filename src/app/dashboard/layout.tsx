@@ -1,12 +1,15 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import React from "react";
 
 export default function DashboardLayout({
   children,
   products,
+  modal,
   product,
 }: {
+  modal: React.ReactNode;
   product: React.ReactNode;
   products: React.ReactNode;
   children: React.ReactNode;
@@ -15,9 +18,12 @@ export default function DashboardLayout({
   const search = searchParams.get("product");
 
   return (
-    <div>
-      {children}
-      {search ? product : products}
+    <div className="relative">
+      <div>{modal}</div>
+      <div>
+        {children}
+        {search ? product : products}
+      </div>
     </div>
   );
 }
