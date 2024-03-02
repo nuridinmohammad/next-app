@@ -15,14 +15,14 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const searchParams = useSearchParams();
-  const search = searchParams.get("product");
+  const productParams = searchParams.get("product");
 
   return (
     <div className="relative">
       <div>{modal}</div>
       <div>
         {children}
-        {search ? product : products}
+        {productParams ? product : products}
       </div>
     </div>
   );

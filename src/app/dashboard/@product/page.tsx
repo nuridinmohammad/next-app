@@ -15,7 +15,7 @@ export default function ProductPage() {
       </Link>
       <h1 className="text-2xl font-medium">Product Detail</h1>
       <Suspense fallback={<p>Loading..</p>}>
-        <Product id={search as string} />
+        <Product id={search} />
       </Suspense>
     </div>
   );
